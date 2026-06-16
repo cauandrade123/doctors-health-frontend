@@ -57,14 +57,17 @@ export default function Auto_cadastro() {
 
 
     
-    const verificarEmail = async (email) => {
-       
-            const url = `https://api.hunter.io/v2/email-verifier?email=${email}&api_key=72167d43207c27e6691b19ab0bbd3a2699b9250d`;
-            const response = await axios.get(url)
-               
-            return response.data.data.status; 
-    };
-    
+  const verificarEmail = async (email) => {
+    try {
+        const url = `https://api.hunter.io/v2/email-verifier?email=${email}&api_key=72167d43207c27e6691b19ab0bbd3a2699b9250d`;
+        const response = await axios.get(url)
+
+        return response.data.data.status;
+    } catch (error) {
+        console.error('Erro ao verificar email (rate limit ou outro erro):', error);
+        return "valid";
+    }
+};
     
     
     const FecharConfirmação = () => {
@@ -257,6 +260,7 @@ export default function Auto_cadastro() {
 
 
     const cadastrarTudo = async (nome, telefone, consulta, DTnascimento, rg, cpf, data, horario, email) => {
+        if (carregando) return; 
         setCarregando(true)
         
     

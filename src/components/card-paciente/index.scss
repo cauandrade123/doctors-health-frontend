@@ -1,25 +1,25 @@
 .card1 {
-  background-color: #ffffff; 
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
-  width: 60vh;
+  width: 480px;
+  min-width: 480px;
+  flex-shrink: 0;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.267);
   transition: transform 0.2s;
-  margin-right: 5vh;
   display: flex;
-  flex-direction: column; 
-  justify-content: space-between; 
-  height: 100%; 
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
 
   button {
     cursor: pointer;
   }
 
-  
   .container-buttons {
     display: flex;
     justify-content: space-between;
-    margin-top: auto; 
+    margin-top: auto;
 
     .bt-gerarPdf {
       border: 0px;
@@ -28,7 +28,7 @@
 
       .simbolPdf {
         height: 4vh;
-      } 
+      }
     }
 
     .meet {
@@ -38,12 +38,12 @@
 
       .simbolMeet {
         height: 4.5vh;
-      } 
+      }
     }
   }
 
   .dados-cliente {
-    flex-grow: 1; 
+    flex-grow: 1;
     margin-bottom: 10px;
 
     h1 {
@@ -88,30 +88,32 @@
 }
 
 @media (max-width: 768px) {
-.card1 {
-  width: 100%; 
-  margin-right: 0;
-  padding: 15px; 
-  height: auto; 
+  .card1 {
+    width: 85vw;      /* largura generosa no mobile */
+    min-width: 85vw;  /* mantém min-width pra scroll funcionar */
+    flex-shrink: 0;   /* não encolhe — essencial pro scroll horizontal */
+    margin-right: 0;
+    padding: 15px;
+    height: auto;
 
-  .dados-cliente {
-    h1 {
-      font-size: 16px; 
-    }
-
-    .field {
-      h2 {
-        font-size: 14px; 
+    .dados-cliente {
+      h1 {
+        font-size: 16px;
       }
 
-      p {
-        font-size: 14px; 
-      }
+      .field {
+        h2 {
+          font-size: 14px;
+        }
 
-      input {
-        width: 100%;
+        p {
+          font-size: 14px;
+        }
+
+        input {
+          width: 100%;
+        }
       }
     }
   }
-}
 }

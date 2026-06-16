@@ -2,27 +2,19 @@
     overflow-y: hidden;
 }
 
-
-
 .main-adm {
     display: flex;
     flex-direction: row;
     min-height: 100vh;
 
-
-
     .consultas {
         display: flex;
         padding-top: 3vh;
-        align-self: center;
+        align-self: stretch;
         min-height: 100vh;
         flex: 1;
-
-
-
+        overflow-y: auto;
         background-color: rgba(153, 153, 153, 0.326);
-
-
     }
 
     .menu-adm {
@@ -65,7 +57,6 @@
             .opcoes-do-menu {
                 display: flex;
                 flex-direction: column;
-
                 line-height: 1.5;
                 width: 100%;
 
@@ -94,7 +85,7 @@
                     color: white;
                     font-size: 200%;
                     line-height: 3;
-                    padding-left: 5vh;
+                    padding-left: 6vh;
                     width: 100%;
                     background-color: rgba(2, 2, 219, 0.877);
                     border-radius: 10px;
@@ -103,33 +94,30 @@
             }
         }
     }
-
-
 }
 
 @media (max-width: 768px) {
     .main-adm {
         flex-direction: column;
+        height: 100vh;
+        overflow: hidden;
 
         .menu-adm {
             width: 100%;
-            min-height: 30vw;
+            min-height: unset;
+            flex-shrink: 0;
             display: flex;
             flex-direction: column;
-
             justify-content: space-between;
 
             .menu-azul {
                 background-color: #006eff;
-                ;
                 width: 100%;
-                height: 20px;
+                height: auto;
                 margin: 0;
-                margin-bottom: 6vw;
                 border-radius: 0;
                 padding: 10px;
                 justify-content: center;
-                margin-top: 0;
 
                 .opcoes-do-menu {
                     display: flex;
@@ -137,7 +125,6 @@
                     gap: 40px;
                     justify-content: center;
                     align-items: center;
-                    
 
                     .Agenda,
                     .Financas,
@@ -165,21 +152,11 @@
                         font-size: 120%;
                         line-height: 0;
                         height: 50px;
-                        border-radius: 10px;
+                        border-radius: 5px;
                         transform: scale(1);
-                        padding-left: 2vh; /* Diminui o espaçamento à esquerda */
-                        width: 90%; /* Reduz a largura do fundo */
-                        border-radius: 5px; /* Diminui o arredondamento */
-                        background-color: rgba(2, 2, 219, 0.5); /* Ajuste da opacidade opcional */
-                    }
-
-                    .opcoes-do-menu .Agenda:hover,
-                    .opcoes-do-menu .Financas:hover,
-                    .opcoes-do-menu .Consultas:hover {
-                        padding-left: 2vh; /* Diminui o espaçamento à esquerda */
-                        width: 90%; /* Reduz a largura do fundo */
-                        border-radius: 5px; /* Diminui o arredondamento */
-                        background-color: rgba(2, 2, 219, 0.5); /* Ajuste da opacidade opcional */
+                        padding-left: 2vh;
+                        width: 90%;
+                        background-color: rgba(2, 2, 219, 0.5);
                     }
                 }
             }
@@ -193,29 +170,28 @@
                 }
 
                 .voltar {
-                    width: 05vw;
+                    width: 5vw;
                 }
-                .seta{
-                    width: 08vw
+
+                .seta {
+                    width: 8vw;
                 }
             }
         }
 
         .consultas {
             display: flex;
-            width: 100%;
-            height: auto;
-
             flex-direction: column;
-            padding-top: 3vh;
-            align-self: center;
-
+            flex-wrap: nowrap;
+            align-items: stretch;
+            padding: 16px;
+            gap: 16px;
             flex: 1;
-            overflow-y: auto;
-
-
-
+            overflow-x: hidden;
+            overflow-y: scroll;      /* scroll vertical na página */
             background-color: rgba(153, 153, 153, 0.326);
+            min-width: 0;
+            min-height: 0;
         }
     }
 }

@@ -9,136 +9,162 @@ body {
 }
 
 .card-container {
-
-
   display: flex;
   flex-direction: column;
   gap: 5vh;
   margin-left: 5vh;
- align-self: center;
-  height: 97vh;
+  align-self: center;
+  height: auto;
   justify-self: center;
- 
-  
-  .cards{
+
+  .cards {
     display: flex;
-    
-    
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 20px;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding-bottom: 14px;
+
+    &::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #0066ff;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #004db3;
+    }
   }
+
   .buscar-paciente {
     display: flex;
     flex-direction: column;
-    justify-content: center; 
-    align-items: flex-start;   
+    justify-content: center;
+    align-items: flex-start;
     gap: 1vh;
 
-   
-    .Buscar::placeholder{
-      color: white;
+    .Buscar::placeholder {
+      color: black;
       font-weight: 400;
     }
 
-    .Buscar:focus{
+    .Buscar:focus {
       outline: none;
     }
 
-    .label-select-input{
+    .label-select-input {
       font-size: 1.8vh;
     }
-    .Buscar{
-     border: 0.5px solid black;
+
+    .Buscar {
+      border: 0.5px solid black;
       height: 6vh;
       width: 40vh;
       padding-left: 2vh;
       padding-right: 2vh;
-      border-radius: 08px;
+      border-radius: 8px;
       font-size: 3vh;
       background-color: #ffffff;
-      opacity: 80%;    
+      opacity: 80%;
     }
 
-    .Buscar::placeholder{
-      color: black;
-    }
-    
     select {
       border: 1px solid #0E39D0;
-      
       height: 4vh;
       width: 38vh;
-  
       padding-left: 1vh;
       border-radius: 8px;
-  
       font-size: 1.7vh;
       color: #000000;
     }
+
     select:focus {
-      outline: none; 
+      outline: none;
     }
   }
 }
 
+.proximo-cliente {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0066ff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 20px;
+  cursor: pointer;
 
+  &:hover {
+    background-color: #004db3;
+  }
+}
 
-  .proximo-cliente {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #0066ff;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
+.editar {
+  background-color: #0066ff;
+  padding: 1vh 3vh;
+  border: none;
+  border-radius: 2vh;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .card-container {
+    align-items: stretch;
+    margin: 0;
+    padding: 0;        /* remove padding — o .consultas já tem */
+    gap: 2vh;
     width: 100%;
-    margin-top: 20px;
-    cursor: pointer;
-    
 
-    &:hover {
-      background-color: #004db3;
-    }
-  }
-
-  .editar {
-    background-color: #0066ff;
-    padding: 1vh 3vh;
-    border: none;
-    border-radius: 2vh;
-    color: white;
-
-    
-  }
-
-  @media (max-width: 768px) {
-
-    .card-container{
+    .buscar-paciente {
+      display: flex;
+      flex-direction: column;
       align-items: start;
-      margin: 0 auto;
-      
-      .buscar-paciente{
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        .Buscar{
-          width:70vw;
-          height: 10vw;
-        }
 
-          .Buscar::placeholder{
-            font-size: 2.5vh;
-          }
+      .Buscar {
+        width: 70vw;
+        height: 10vw;
       }
-      .cards{
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        
-        margin-bottom: 40vh;
-        
-        
-        
+
+      .Buscar::placeholder {
+        font-size: 2.5vh;
       }
     }
-      
+
+    .cards {
+      display: flex;
+      flex-direction: row;   /* scroll horizontal nos cards */
+      flex-wrap: nowrap;
+      overflow-x: auto;      /* scroll horizontal ativo */
+      overflow-y: visible;
+      gap: 16px;
+      padding-bottom: 14px;
+      margin-bottom: 0;      /* remove margin-bottom exagerada */
+
+      &::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #0066ff;
+        border-radius: 10px;
+      }
+    }
   }
+}

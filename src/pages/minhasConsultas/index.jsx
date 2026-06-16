@@ -17,9 +17,9 @@ export default function MinhasConsultas() {
             let url = `/MinhasConsultas`;
 
             try {
+
                 const token = localStorage.getItem('token'); 
              
-        
                 const resp = await api.get(url, {
                     headers: {
                         Authorization: `Bearer ${token}`,
