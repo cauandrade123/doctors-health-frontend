@@ -31,6 +31,13 @@ export default function Navegacao() {
           localStorage.removeItem('token');
           return <Navigate to="/login" />;
         }
+
+        // O token de paciente fica na mesma chave do localStorage e não dá acesso ao painel.
+        // Tokens emitidos antes de existir o campo "tipo" continuam passando aqui; quem
+        // decide de fato o acesso aos dados é a API.
+        if (decodedoToken.tipo && decodedoToken.tipo !== 'admin') {
+          return <Navigate to="/login" />;
+        }
     
        
         return children;
