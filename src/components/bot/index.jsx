@@ -1,4 +1,5 @@
 import axios from "axios";
+import { api } from "../../servicos";
 import { useState } from "react";
 import { Await, useNavigate } from "react-router-dom";
 
@@ -27,15 +28,17 @@ export default function Chat() {
 
         
 
-        const respotadobot = await axios.get(`https://api.wit.ai/message`, {
-            params: {
-                v: '20241016',
-                q: mensagem,
-            },
-            headers: {
-                Authorization: `Bearer VAF3FY436CTT5YRF6L57VEZUOLDRKTSM`,
-            },
-        });
+        // A interpretação é feita pela API, que guarda a chave do serviço no servidor.
+        const respotadobot = await api.post('/bot/interpretar', { mensagem }).catch(() => null);
+
+        if (!respotadobot) {
+            setResposta((prevResposta) => [
+                ...prevResposta,
+                { text: 'Não consegui responder agora. Tente novamente em instantes.', sender: 'bot' }
+            ]);
+            setCarregando(false);
+            return;
+        }
 
         let resp = respotadobot.data;
 

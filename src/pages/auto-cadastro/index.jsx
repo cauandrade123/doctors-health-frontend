@@ -16,7 +16,6 @@ import CardNegacação from '../../components/negacao/negacao'
 import CardCarregamento from '../../components/carregando/carregando'
 import MapComponent from "../../components/MapComponent";
 import { api } from "../../servicos";
-import axios from "axios";
 
 
 
@@ -49,20 +48,18 @@ export default function Auto_cadastro() {
             return false;
         }
        
-            const url = `https://api.veriphone.io/v2/verify?phone=55${novo}&key=2054E5F5B84C4794BF5E1C458782559F`;
-            const response = await axios.get(url);
-            console.log(response.data.phone_valid);
-            return response.data.phone_valid; 
+            const response = await api.post('/validar-telefone', { telefone: novo });
+            console.log(response.data.valido);
+            return response.data.valido; 
     };
 
 
     
   const verificarEmail = async (email) => {
     try {
-        const url = `https://api.hunter.io/v2/email-verifier?email=${email}&api_key=72167d43207c27e6691b19ab0bbd3a2699b9250d`;
-        const response = await axios.get(url)
+        const response = await api.post('/validar-email', { email });
 
-        return response.data.data.status;
+        return response.data.status;
     } catch (error) {
         console.error('Erro ao verificar email (rate limit ou outro erro):', error);
         return "valid";

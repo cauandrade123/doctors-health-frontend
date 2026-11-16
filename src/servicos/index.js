@@ -1,7 +1,9 @@
 import axios from "axios";
 
+// Endereço da API definido no build (REACT_APP_API_URL). Em produção deve ser HTTPS:
+// o token de sessão vai em toda requisição. O valor padrão é o servidor atual.
 export const api = axios.create({
-    baseURL: "http://100.49.188.239:3000"
+    baseURL: process.env.REACT_APP_API_URL || "http://100.49.188.239:3000"
 })
 
 // Envia em toda chamada à API o token salvo no login (painel) ou no autocadastro (paciente).
