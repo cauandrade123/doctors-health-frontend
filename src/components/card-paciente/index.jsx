@@ -46,7 +46,13 @@ export default function Card_Paciente({ id, condicao, cpf, dia_horario, horario,
 
     const navigate = useNavigate();
 
+    // Abre a edição com os valores atuais: campos não alterados são reenviados como estão,
+    // em vez de vazios (preço vazio era recusado e apagava os outros dados).
     const edit = () => {
+        setNovoTratamento(tratamento ?? '');
+        setNovaCondicao(condicao ?? '');
+        setNovaMedicacao(medicacao ?? '');
+        setNovoPreco(preco ?? '');
         setEditarMode(true);
     };
     
@@ -78,7 +84,7 @@ export default function Card_Paciente({ id, condicao, cpf, dia_horario, horario,
                 "tratamento": novoTratamento,
                 "condicao": novaCondicao,
                 "medicacao": novaMedicacao,
-                "preco": novoPreco
+                "preco": novoPreco === '' ? null : novoPreco
             };
             const tal = await api.put(url, payload);
             setNotificationMessage('Dados atualizados com sucesso!');
